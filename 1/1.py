@@ -1,10 +1,14 @@
+import math
+
+def gauss(n):
+    return (((n * n) + n) / 2)
+
+def sumDivisibleBy(x, limit):
+    return x * gauss(limit // x)
+
 no1   = int(input('First number:   '))
 no2   = int(input('Second number:  '))
-limit = int(input('Limit:          '))
+limit = int(input('Limit:          ')) - 1
 
-sum = 0;
-for x in range(1, limit):
-    if (x % no1) == 0 or (x % no2) == 0:
-        sum += x;
-
-print(sum)
+result = sumDivisibleBy(no1, limit) + sumDivisibleBy(no2, limit) - sumDivisibleBy(no1 * no2, limit)
+print(result)
