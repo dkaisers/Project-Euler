@@ -1,28 +1,18 @@
+import math
+
 def tri(n):
     return n * (n + 1) / 2
 
-def pen(n):
-    return n * (3 * n - 1) / 2
+def isPen(n):
+    return ((math.sqrt(24 * n + 1) + 1) / 6) % 1 == 0
 
-def hex(n):
-    return n * (2 * n - 1)
+def isHex(n):
+    return ((math.sqrt(8 * n + 1) + 1) / 4) % 1 == 0
 
-n = 1
-tris = []
-pens = []
-hexs = []
-
+i = 286
 while True:
-    t = tri(n)
-    p = pen(n)
-    h = hex(n)
-
-    tris.append(t)
-    pens.append(p)
-    hexs.append(h)
-
-    if n > 285 and t in pens and t in hexs:
+    t = tri(i)
+    if isPen(t) and isHex(t):
         print(t)
         break
-    
-    n += 1
+    i += 1
